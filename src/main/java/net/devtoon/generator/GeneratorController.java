@@ -1,19 +1,17 @@
 package net.devtoon.generator;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 class GeneratorController {
 
     @Autowired
     private GeneratorService generatorService;
 
-    @RequestMapping(name = "/", method = RequestMethod.GET)
-    @ResponseBody String generate() {
+    @RequestMapping(name = "/", method = RequestMethod.GET) String generate() {
         StringBuilder responseBuilder = new StringBuilder();
         for (int i = 0; i < 10; i++) {
             responseBuilder.append(generatorService.generateWork());
