@@ -4,10 +4,12 @@ import com.github.tomakehurst.wiremock.client.WireMock;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
+@SpringBootTest(classes = GeneratorService.class)
+@AutoConfigureWireMock(port = 0)
 class GeneratorServiceTest extends AbstractServiceTest {
 
     @Autowired
